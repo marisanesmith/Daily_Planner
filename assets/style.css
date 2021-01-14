@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    color: teal;
+    text-align: center;
+}
+
+form {
+   padding: 20px;
+}
