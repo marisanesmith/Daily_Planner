@@ -24,6 +24,8 @@ $(document).ready(function() {
     const saveIcon = $("#display-icon")
 
     // Get the stored items from the to-do list from local storage
+    let storedPlans = JSON.parse(localStorage.getItem("storedPlans"));
+    if (test) {console.log(storedPlans)}
 
     //If the plans were retrieved from local storage, update the plan array to it
 
