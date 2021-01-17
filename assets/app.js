@@ -64,25 +64,42 @@ var myDay = [
         reminder: ""
     },
 ]
-    //test flag
-    const test = false;
 
-    //show the date and time from the present moment
+ // get data for the header date
+ function getHeaderDate() {
     const timeNow = moment().format('LLLL');
     console.log(timeNow)
+    $("#currentDay").text(timeNow)
+ }
 
-    let $headingDate = $("#currentDay");
-    $headingDate.text(timeNow);
+//loads header date
+ getHeaderDate();
 
-    let nowHour24 = moment().format('H');
-    console.log(nowHour24)
-    let nowHour12 = moment().format('h');
-    console.log(nowHour12)
+ //add in the elements of the scheduler body
+ myDay.forEach(function(thisHour) {
+     //create the row for the timeblocks
+     let hourRow = $("<form>").attr({
+         "class": "row"
+     });
+    $(".container").append(hourRow); 
+     //creates the time field
+     let hourIndex = $("<div>")
+     .text('${thisHour.hour}${thisHour.meriem}')
+     .attr({
+         "class": "col-md-2 hour"
+     });
+ })
+    //show the date and time from the present moment
 
-    if (test) {
-        nowHour24 = 13;
-        nowHour12 = 1;
-    }
+    // let nowHour24 = moment().format('H');
+    // console.log(nowHour24)
+    // let nowHour12 = moment().format('h');
+    // console.log(nowHour12)
+
+    // if (test) {
+    //     nowHour24 = 13;
+    //     nowHour12 = 1;
+    // }
 
     //using a save icon to save the event in the daily calendar
     const saveIcon = $("#display-icon")
@@ -95,7 +112,8 @@ var myDay = [
 
     //set variable referencing planner element
     let $plannerDiv = $("#formPlanner");
-    $plannerDiv.empty();
+    $plannerDiv.empty()
+    
    
 
     // build the calendar by row for a fixed number of hours
