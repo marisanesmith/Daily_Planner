@@ -72,6 +72,12 @@ var myDay = [
     $("#currentDay").text(timeNow)
  }
 
+ //saves data to the localStorage
+ function saveSchedule() {
+     localStorage.setItem("myDay", JSOM.stingify(myDay));
+     console.log(saveSchedule);
+ }
+
 //loads header date
  getHeaderDate();
 
