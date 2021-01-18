@@ -51,15 +51,15 @@ var myDay = [
     },
     {
         id: "7",
-        hour: "04",
-        time: "16",
+        hour: "09",
+        time: "21",
         meridiem: "pm",
         reminder: ""
     },
     {
         id: "8",
-        hour: "05",
-        time: "17",
+        hour: "10",
+        time: "22",
         meridiem: "pm",
         reminder: ""
     },
@@ -72,14 +72,14 @@ var myDay = [
     $("#currentDay").text(timeNow)
  }
 
- //saves data to the localStorage
+//saves data to the localStorage
  function saveSchedule() {
      localStorage.setItem("myDay", JSON.stingify(myDay));
-     console.log(saveSchedule);
+     console.log(myDay);
  }
 
  //sets any data in localStorage to the view
- function displaySchedule(){
+ function displaySchedule() {
      myDay.forEach(function (_thisHour) {
          $(`#${_thisHour.id}`).val(_thisHour.reminder);
      })
@@ -87,16 +87,13 @@ var myDay = [
 
  // set any existing localStorage data to the view if it exists
  function storage() {
-     var storedDay = JSON.parse(localStorage.getItem("myDay"));
+     var savedDay = JSON.parse(localStorage.getItem("myDay"));
 
-     if (storedDay) {
-         myDay = storedDay;
+     if (savedDay != null) {
+         myDay = savedDay;
      }
-
-     saveSchedule();
      displaySchedule();
-
- }
+}
 
 //loads header date
  getHeaderDate();
@@ -126,15 +123,15 @@ var myDay = [
      
      if (thisHour.time < moment().format("HH")) {
          eventData.attr({
-             "class": "past"
+             "class": "row past"
          })
      } else if (thisHour.time === moment().format("HH")) {
          eventData.attr({
-             "class": "present"
+             "class": "row present"
          })
      } else if (thisHour.time > moment().format("HH")) {
          eventData.attr({
-             "class": "future"
+             "class": "row future"
          })
      }
 
@@ -153,43 +150,13 @@ var myDay = [
      //saves data to be used in the localStorage
      $(".saveBtn").on("click", function(event) {
          event.preventDefault();
-         let saveIndex = $(this).siblings(".description").children(".future").attr("id");
-         myDay[saveIndex].reminder = $(this).siblings(".description").children(".future").val();
+         let saveIndex = $(this).siblings(".description").children("textarea").attr("id");
+         myDay[saveIndex].reminder = $(this).siblings(".description").children("textarea").val();
          console.log(saveIndex);
          saveSchedule();
          displaySchedule();
      })
-    //show the date and time from the present moment
-
-    // let nowHour24 = moment().format('H');
-    // console.log(nowHour24)
-    // let nowHour12 = moment().format('h');
-    // console.log(nowHour12)
-
-    // if (test) {
-    //     nowHour24 = 13;
-    //     nowHour12 = 1;
-    // }
-
-    //using a save icon to save the event in the daily calendar
-    // const saveIcon = $("#display-icon")
-
-    // // Get the stored items from the to-do list from local storage
-    // let storedPlans = JSON.parse(localStorage.getItem("storedPlans"));
-    // if (test) {console.log(storedPlans)}
-
-    // //If the plans were retrieved from local storage, update the plan array to it
-
-    // //set variable referencing planner element
-    // let $plannerDiv = $("#formPlanner");
-    // $plannerDiv.empty()
-    
-   
-
-    // // build the calendar by row for a fixed number of hours
-    // for (let hour =9; hour <=17; hour ++) {
-    //     let index = hour -9;
-    // }
+ 
 
 
 
