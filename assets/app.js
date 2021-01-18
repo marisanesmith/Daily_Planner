@@ -74,8 +74,28 @@ var myDay = [
 
  //saves data to the localStorage
  function saveSchedule() {
-     localStorage.setItem("myDay", JSOM.stingify(myDay));
+     localStorage.setItem("myDay", JSON.stingify(myDay));
      console.log(saveSchedule);
+ }
+
+ //sets any data in localStorage to the view
+ function displaySchedule(){
+     myDay.forEach(function (_thisHour) {
+         $(`#${_thisHour.id}`).val(_thisHour.reminder);
+     })
+ }
+
+ // set any existing localStorage data to the view if it exists
+ function storage() {
+     var storedDay = JSON.parse(localStorage.getItem("myDay"));
+
+     if (storedDay) {
+         myDay = storedDay;
+     }
+
+     saveSchedule();
+     displaySchedule();
+
  }
 
 //loads header date
@@ -125,6 +145,19 @@ var myDay = [
      });
      saveEvent.append(saveButton);
      hourRow.append(hourIndex, eventEntry, saveEvent);
+     })
+
+     //loads any existing localStorage data after the items are created
+     storage();
+
+     //saves data to be used in the localStorage
+     $(".saveBtn").on("click", function(event) {
+         event.preventDefault();
+         let saveIndex = $(this).siblings(".description").children(".future").attr("id");
+         myDay[saveIndex].reminder = $(this).siblings(".description").children(".future").val();
+         console.log(saveIndex);
+         saveSchedule();
+         displaySchedule();
      })
     //show the date and time from the present moment
 
