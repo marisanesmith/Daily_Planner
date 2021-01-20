@@ -35,7 +35,7 @@ Create a useable daily planner where entries and reminders can be stored
 5. Create repository
 6. Inside the repo go to settings, scroll down to GitHub Pages and publish your site to the Branch: main
 
-[GitHub Live Site](https://marisanesmith.github.io/Trivia_Game)
+[GitHub Live Site](https://marisanesmith.github.io/Daily_Planner/)
 
 ## Credits
 

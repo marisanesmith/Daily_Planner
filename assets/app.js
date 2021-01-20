@@ -2,63 +2,63 @@
 var myDay = [
     {
         id: "0",
-        hour: "09",
+        hour: "9:00 ",
         time: "09",
         meridiem: "am",
         reminder: ""
     },
     {
         id: "1",
-        hour: "10",
+        hour: "10:00 ",
         time: "10",
         meridiem: "am",
         reminder: ""
     },
     {
         id: "2",
-        hour: "11",
+        hour: "11:00 ",
         time: "11",
         meridiem: "am",
         reminder: ""
     },
     {
         id: "3",
-        hour: "12",
+        hour: "12:00 ",
         time: "12",
         meridiem: "pm",
         reminder: ""
     },
     {
         id: "4",
-        hour: "01",
+        hour: "1:00 ",
         time: "13",
         meridiem: "pm",
         reminder: ""
     },
     {
         id: "5",
-        hour: "02",
+        hour: "2:00 ",
         time: "14",
         meridiem: "pm",
         reminder: ""
     },
     {
         id: "6",
-        hour: "03",
+        hour: "3:00 ",
         time: "15",
         meridiem: "pm",
         reminder: ""
     },
     {
         id: "7",
-        hour: "04",
+        hour: "4:00 ",
         time: "16",
         meridiem: "pm",
         reminder: ""
     },
     {
         id: "8",
-        hour: "05",
+        hour: "5:00 ",
         time: "17",
         meridiem: "pm",
         reminder: ""
