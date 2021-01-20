@@ -51,25 +51,25 @@ var myDay = [
     },
     {
         id: "7",
-        hour: "09",
-        time: "21",
+        hour: "04",
+        time: "16",
         meridiem: "pm",
         reminder: ""
     },
     {
         id: "8",
-        hour: "10",
-        time: "22",
+        hour: "05",
+        time: "17",
         meridiem: "pm",
         reminder: ""
     },
 ]
 
- // get data for the header date
+ // get data for the header date and show the present time and date
  function getHeaderDate() {
     const timeNow = moment().format('LLLL');
-    console.log(timeNow)
-    $("#currentDay").text(timeNow)
+    console.log(timeNow);
+    $("#currentDay").text(timeNow);
  }
 
 //saves data to the localStorage
@@ -82,18 +82,22 @@ var myDay = [
  function displaySchedule() {
      myDay.forEach(function (_thisHour) {
          $(`#${_thisHour.id}`).val(_thisHour.reminder);
+         console.log(_thisHour.reminder)
      })
  }
 
  // set any existing localStorage data to the view if it exists
  function storage() {
      var savedDay = JSON.parse(localStorage.getItem("myDay"));
-
+    console.log(savedDay);
      if (savedDay != null) {
          myDay = savedDay;
+         console.log(myDay)
      }
      displaySchedule();
 }
+
+displaySchedule();
 
 //loads header date
  getHeaderDate();
@@ -104,7 +108,9 @@ var myDay = [
      let hourRow = $("<form>").attr({
          "class": "row"
      });
+
     $(".container").append(hourRow); 
+
      //creates the time field
      let hourIndex = $("<div>")
      .text(`${thisHour.hour}${thisHour.meridiem}`)
@@ -113,31 +119,34 @@ var myDay = [
      });
 
      //creates the area to add in events in the scheduler
-     let eventEntry = $("<div>").attr({
+     let eventEntry = $("<div>")
+     .attr({
          "class": "col-md-9 description p-0"
      });
+
      // shows whether the time is past, present or future and is color coordinated
      var eventData = $("<textarea>");
      eventEntry.append(eventData);
      eventData.attr("id", thisHour.id);
      
      if (thisHour.time < moment().format("HH")) {
-         eventData.attr({
+         hourRow.attr({
              "class": "row past"
          })
      } else if (thisHour.time === moment().format("HH")) {
-         eventData.attr({
+         hourRow.attr({
              "class": "row present"
          })
      } else if (thisHour.time > moment().format("HH")) {
-         eventData.attr({
+         hourRow.attr({
              "class": "row future"
          })
      }
 
      //creates save button
      let saveButton = $("<i class= 'far fa-save fa-lg'></i>")
-     let saveEvent = $("<button>").attr({
+     let saveEvent = $("<button>")
+     .attr({
          "class": "col-md-1 saveBtn"
      });
      saveEvent.append(saveButton);
