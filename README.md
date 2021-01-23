@@ -24,7 +24,7 @@ Create a useable daily planner where entries and reminders can be stored
 1. Use jQuery to create a fully functional home page with time blocks from 9 a.m. to 5 p.m. where a user can input reminders or daily to dos.
 2. Allow the user to save the data they input to the daily calender by saving it to local storage 
 
-![Home Page with Daily Planner](assets/images/Daily_Planner.png)
+![Home Page with Daily Planner](assets/images/planner.png)
 
 
 ## Providing a URL for the website
